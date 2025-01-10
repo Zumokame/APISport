@@ -2,8 +2,6 @@
 console.log('Hello JS')
 import { utils} from "./function.js"
 
-//const tableau = ["63600", "foot"];
-//console.log('tableau ',createArguments(tableau))
 
 // //* Acceder a une données à l'interieur d'un objet
 // //console.log("📄 ~ data:", data)
