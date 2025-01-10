@@ -1,6 +1,6 @@
 //* https://www.data.gouv.fr/fr/dataservices/api-data-es/
 console.log('Hello JS')
-import { utils,init } from "./function.js"
+import { utils} from "./function.js"
 
 //const tableau = ["63600", "foot"];
 //console.log('tableau ',createArguments(tableau))
@@ -18,5 +18,4 @@ import { utils,init } from "./function.js"
 
 
 
-//utils.submitForm()
-init.submitForm()
+utils.submitForm()
