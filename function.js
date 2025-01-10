@@ -5,21 +5,17 @@ export const utils={
     submitForm : async function(){
 
         const form = document.querySelector("#filter")
-        
+
        form.addEventListener("submit",(event)=>{
-        //utils.createArguments(utils.fetchGrounds(tableau))
+
         event.preventDefault()
 
-        
         const cp = form.cp.value
         const sport = form.sport.value
         const tableau = [cp, sport]
 
         console.log("appel de createArguments ")
         utils.createArguments(tableau)
-       
-       
-
        })
         
     },
@@ -32,7 +28,6 @@ export const utils={
             arg += `%22${tableau[i]}%22`;
             //console.log("📄 ~ arg:", arg);
         }
-        console.log("appel de fetchGrounds ")
         utils.fetchGrounds(arg)
         
     },
@@ -49,27 +44,27 @@ export const utils={
     
     const datas= await response.json()
     //console.log("📄 ~ fetchGrounds ~ datas:", datas)
-    console.log("appel de loop ")
         utils.loop(datas)
     },
 
     loop:function(datas){
        //document.querySelector('.container').remove()
        const containerPlace=document.querySelector('.container')
+       containerPlace.innerHTML="";
         
     
     //    subElement.remove()
 
         for(const data of datas.results){
-            console.log("📄 ~ data:", data)
-            console.log("appel de addGroundToHtml")
+            //console.log("📄 ~ data:", data)
+            //console.log("appel de addGroundToHtml")
             utils.addGroundToHtml(data,containerPlace)
         }
         
     },
 
     addGroundToHtml:function(data,containerPlace){
-        //console.log("📄 ~ addGroundToHtml ~ data:", data)
+        
         //console.log("📄 ~ addGroundToHtml ~ containerPlace:", containerPlace)
         //const containerPlace=document.querySelector('.container')
        
@@ -84,8 +79,8 @@ export const utils={
         ground.textContent=data.equip_type_name
     
         title.textContent=data.equip_nom
-        //console.log("📄 ~ addGroundToHtml ~ title:", title)
-        
+
         containerPlace.appendChild(groundTemplateClone);
     }
+        
 } 

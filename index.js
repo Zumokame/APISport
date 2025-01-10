@@ -10,7 +10,6 @@ import { utils} from "./function.js"
 // console.log("📄 ~ data:", data.results[0].equip_nom)
 
 //submitForm
-
 //createArguments
 //fetchGrounds
 //loop
