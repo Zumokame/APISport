@@ -16,7 +16,6 @@ export const utils={
         console.log("appel de createArguments ")
         utils.createArguments(tableau)
        })
-        
     },
     createArguments:function(tableau) {
         let arg = "";
@@ -27,14 +26,13 @@ export const utils={
             arg += `%22${tableau[i]}%22`;
         }
         utils.fetchGrounds(arg)
-
     },
 
 
     fetchGrounds:async function(cp){
-    
+
         const response =  await fetch(`https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records?where=${cp}&limit=20`)
-    
+
     const datas= await response.json()
     //console.log("📄 ~ fetchGrounds ~ datas:", datas)
         utils.loop(datas)
@@ -43,13 +41,11 @@ export const utils={
     loop:function(datas){
        const containerPlace=document.querySelector('.container')
        containerPlace.innerHTML="";
-        
-
 
         for(const data of datas.results){
             utils.addGroundToHtml(data,containerPlace)
         }
-        
+
     },
 
     addGroundToHtml:function(data,containerPlace){

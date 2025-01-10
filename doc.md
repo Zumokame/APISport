@@ -1,6 +1,6 @@
 # Créer un site qui recupere des informations sur les terrains de sport dans une commune donnée.
 
-## user story
+## Besoins utilisateur
 En tant que: Utilisateur du site Je veux: rechercher des informations sur les terrains de sport disponibles dans une commune donnée Afin de: planifier mes activités sportives et choisir le terrain approprié.
 Recherche par commune:
 
@@ -59,17 +59,83 @@ L'utilisateur doit pouvoir laisser sa propre évaluation et ses commentaires apr
 
 
 
-## Créer une fonction pour appeler "fetch" qui va recuperer un tableau de données en filtrant le sport désiré pour une commune.
+
+
+## Soumission du formulaire
+//submitForm
 ```javascript
-async function fetchGrounds(cp,sport){
-    const response =  await fetch(`https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records?where=%22${cp}%22&limit=2`)
-    // const response =  await fetch(`https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records?where=%22${cp}%22&limit=2`)
-// console.log("📄 ~ response:", response)
-const datas= await response.json()
-console.log("📄 ~ affichage:", datas)
-}
+    submitForm : async function(){
+
+        const form = document.querySelector("#filter")
+
+       form.addEventListener("submit",(event)=>{
+
+        event.preventDefault()
+
+        const cp = form.cp.value
+        const sport = form.sport.value
+        const tableau = [cp, sport]
+
+        console.log("appel de createArguments ")
+        utils.createArguments(tableau)
+       })
+    },
 ```
+## Créer une fonction pour générer la chaine de caractères qui sera dnas Fetch.
+//createArguments
+```javascript
+    createArguments:function(tableau) {
+        let arg = "";
+        for (let i = 0; i < tableau.length; i++) {
+            if (i > 0) {
+                arg += "%20and%20";
+            }
+            arg += `%22${tableau[i]}%22`;
+        }
+        utils.fetchGrounds(arg)
+    },
+```
+## Créer une fonction pour appeler "fetch" qui va recuperer un tableau de données en filtrant le sport désiré pour une commune.
+//fetchGrounds
+```javascript
+    fetchGrounds:async function(cp){
 
-## créer une fonction qui va recuperer le template d'un terrain et inserer les données
+        const response =  await fetch(`https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records?where=${cp}&limit=20`)
 
-## boucler sur le tableau de données pour créer une tuile par terrain
+    const datas= await response.json()
+    //console.log("📄 ~ fetchGrounds ~ datas:", datas)
+        utils.loop(datas)
+    },
+```
+## Créer une fonction pour générer la boucle qui va créer les tuiles.
+//loop
+```javascript
+    loop:function(datas){
+       const containerPlace=document.querySelector('.container')
+       containerPlace.innerHTML="";
+
+        for(const data of datas.results){
+            utils.addGroundToHtml(data,containerPlace)
+        }
+
+    },
+```
+## Créer une tuile et l'insérer.
+//addGroundToHtml
+```javascript
+    addGroundToHtml:function(data,containerPlace){
+        
+        const groundTemplate = document.getElementById("template-ground");
+      
+        const groundTemplateClone = groundTemplate.content.cloneNode(true);
+        
+        const title=groundTemplateClone.querySelector(".title.is-4")
+        
+        const ground=groundTemplateClone.querySelector("#description")
+        ground.textContent=data.equip_type_name
+    
+        title.textContent=data.equip_nom
+
+        containerPlace.appendChild(groundTemplateClone);
+    }
+```

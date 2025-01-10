@@ -1,47 +1,216 @@
-/* Styles personnalisés */
-.column.is-one-third{
-  width: 100%;
-  height: 100%;
- 
+/* Variables */
+:root {
+  /* Principales */
+  --color-orange-primary: rgb(240, 148, 31);
+  --color-orange-secondary: rgb(239, 96, 36);
+  
+  /* Neutre */
+  --color-dark-neutral: rgb(54, 52, 50);
+  
+  /* Accentuation */
+  --color-teal-accent: rgb(25, 103, 116);
+  --color-grey-accent: rgb(144, 161, 157);
 }
-/* Espacement entre les cartes */
-#template-container .column {
-    margin-bottom: 20px;
-    flex: 0 0 90%;
+/* Base */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;}
+
+body {
+  
+  background-color: var(--color-grey-accent);
+  color: var(--color-dark-neutral);
+  font-family: Arial, sans-serif;
+
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--color-orange-primary);
+  color: white;
+  padding: 1rem;
+}
+
+.navbar a{
+  background-color: var(--color-orange-primary);
+  color: var(--color-orange-secondary);
+  padding: 1rem;
+  
+  text-decoration: none;
+}
+
+.navbar-brand {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+#filter label {
+  color: white;
+}
+
+#filter input {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+#filter button {
+  background-color: var(--color-teal-accent);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Card */
+.card {
+  background-color: white;
+  border-bottom: 3px solid var(--color-orange-secondary);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+img {
+  margin: 2rem 0rem 0rem 0rem;
+  max-width : 99%;
+  height : auto;
+  align-self: center;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  /* color:var(--color-orange-secondary); */
+}
+
+.button {
+  background-color: var(--color-teal-accent);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Modal */
+.modal-card {
+  max-width: 90%;
+  width: 600px;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--color-orange-primary);
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .navbar-menu {
+    flex-direction: column;
+    align-items: stretch;
     
-    height: 600px   ; 
-  }
-  
-  /* Modale */
-  .modal-card {
-    max-width: 800px;
-    
-  }
-  
-  .modal-card-head, .modal-card-foot {
-    background-color: #f5f5f5;
-  }
-  
-  .modal-card-title {
-    color: #363636;
-  }
-  
-  /* Boutons */
-  .button.is-primary {
-    background-color: #00d1b2;
-  }
-  
-  .button.is-primary:hover {
-    background-color: #00b89c;
   }
 
+  #filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #filter input, #filter button {
+    width: 100%;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .columns .is-multiline{
+    max-width: 90%;
+    
+  }
+
+  .card {
+    background-color: white;
+    border-bottom: 3px solid var(--color-orange-secondary);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    min-width: 500px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
   .container{
     display: flex;
     flex-flow: wrap;
+    width: 90%;
   }
 
-  #filter{
-    margin:1rem 5rem 0 0;
+  .column.is-one-third{
+    width: 100%;
   }
   
+  .columns.is-multiline{
+    width: 300px;
+  }
+  .card {
+    max-width: 90%;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container{
+    display: flex;
+    flex-flow: wrap;
+    width: 90%;
+  }
+
+  .column.is-one-third{
+    width: 100%;
+  }
   
+  .columns.is-multiline{
+    width: 300px;
+  }
+  .card {
+    max-width: 90%;
+    width: 100%;
+  }
+}
