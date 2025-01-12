@@ -4,76 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SportGround</title>
-  <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./index.js" defer></script>
+  <link href="./reset.css" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+  <script src="./index.js" type="module" defer></script>
+ 
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <nav class="nav" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">
         <h1>SportGround</h1>
       </a>
     </div>
-    <div class="navbar-menu" name="cp">
-      <div class="navbar-end" name="mot clef">
+    
+      
         <form id="filter">
-          <label for="name" name="cp">Code postal</label>
-          <input name = "cp" type="text">
-          <label for="name" name="sport">mot clé</label>
-          <input name = "sport" type="text">
-          <label for="name"></label>
-          <button  id="soumettre" name="Soumettre" action="GET">Soumettre</button>
+          <label name="cp" for="name">Code postal</label>
+          <input id="ville" name="cp" title="Entrez un code postal" placeholder="Entrez un code postal">
+      
+          <label name="sport" for="name">mot clé</label>
+          <input name="sport" type="text" title=" Entrez un mot à rechercher" placeholder="Entrez un mot ou un sport">
+          
+          <button id="soumettre" name="Soumettre" action="GET">Soumettre</button>
         </form>
-      </div>
-    </div>
+      
+   
   </nav>
-
   <!-- Main Content -->
   <section class="section">
     <template id="template-ground">
-      <div id="template-container" class="columns is-multiline">
+      
   
-        <div class="column is-one-third">
+        
           <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="./img/1178479.png" alt="Placeholder image">
-              </figure>
-            </div>
+
             <div class="card-content">
               <p class="title is-4">Titre de l'élément</p>
               <p id="description">Description de l'élément.</p>
-              <button class="button is-primary modal-button" data-target="#modal-template">Voir plus</button>
+              <!-- <button class="button is-primary modal-button" data-target="#modal-template">Voir plus</button> -->
+              <button class="button is-primary modal-button" data-target="#modal-detail" type="button">
+                Voir plus
+              </button>
             </div>
           </div>
-        </div>
-      </div>
+        
+      
   </template>
+            <!-- Template Section -->
+          <!-- Modal -->
+          <dialog class="modal" id="modal-alert">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Message</p>
+                </header>
+                <section class="modal-card-body">
+                  <!-- Contenu dynamique de la modal -->
+                  <p>Les détails de l'élément sélectionné apparaîtront ici.</p>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button close">Fermer</button>
+                </footer>
+           </dialog>
+    
+          <dialog class="modal" id="modal-detail">
+            <div class="columns is-multiline" id="template-container">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Titre</p>
+                  </header>
+                  <section class="modal-card-body">
+                    <p>message</p>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <button class="button close">Fermer</button>
+                  </footer>
+                </div>
+          </dialog>
+    
     <div class="container">
-      <!-- Template Section -->
-
-
-      <!-- Modal -->
-      <template id="modal">
-          <div id="modal-template" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-              <header class="modal-card-head">
-                <p class="modal-card-title">Détails</p>
-                <button class="delete" aria-label="close"></button>
-              </header>
-              <section class="modal-card-body">
-                <!-- Contenu dynamique de la modal -->
-                <p>Les détails de l'élément sélectionné apparaîtront ici.</p>
-              </section>
-              <footer class="modal-card-foot">
-                <button class="button is-success">Confirmer</button>
-                <button class="button">Annuler</button>
-              </footer>
-            </div>
-          </div>
-      </template>
+      
 
     </div>
   </section>

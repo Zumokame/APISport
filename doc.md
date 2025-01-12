@@ -139,3 +139,6 @@ L'utilisateur doit pouvoir laisser sa propre évaluation et ses commentaires apr
         containerPlace.appendChild(groundTemplateClone);
     }
 ```
+## Afficher/masquer une modale
+//tools.modalOpen
+//tools.modalClose

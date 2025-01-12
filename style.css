@@ -6,6 +6,7 @@
   
   /* Neutre */
   --color-dark-neutral: rgb(54, 52, 50);
+  --color-white-neutral: rgb(255, 255, 255);
   
   /* Accentuation */
   --color-teal-accent: rgb(25, 103, 116);
@@ -15,12 +16,14 @@
 
 html, body {
   height: 100%;
+  min-width: 500px;
   margin: 0;
   padding: 0;}
 
 body {
-  
-  background-color: var(--color-grey-accent);
+  position: relative;
+  min-height:100vh;
+  background-color: greenyellow;
   color: var(--color-dark-neutral);
   font-family: Arial, sans-serif;
 
@@ -28,189 +31,87 @@ body {
   margin: 0;
   padding: 0;
 }
+/* NAVBAR */
+.nav{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:var(--color-orange-primary );
+}
+
+#filter{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 1rem 1rem 1rem; 
+  
+}
+
+#filter #soumettre{
+  margin:1rem 0;
+
+}
 
 .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+display:flex;
+flex-flow: wrap;
+width: 100%;
+max-width: 1600px;
+margin: 0 auto;
+
+background-color: var(--color-white-neutral);
 }
 
-/* Navbar */
-.navbar {
-  background-color: var(--color-orange-primary);
-  color: white;
-  padding: 1rem;
-}
-
-.navbar a{
-  background-color: var(--color-orange-primary);
-  color: var(--color-orange-secondary);
-  padding: 1rem;
-  
-  text-decoration: none;
-}
-
-.navbar-brand {
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
-}
-
-.navbar-menu {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-#filter {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-
-#filter label {
-  color: white;
-}
-
-#filter input {
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
-}
-
-#filter button {
-  background-color: var(--color-teal-accent);
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-/* Card */
-.card {
-  background-color: white;
-  border-bottom: 3px solid var(--color-orange-secondary);
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  max-width: 500px;
-}
-
-.card-content {
-  padding: 1.5rem;
-}
-img {
-  margin: 2rem 0rem 0rem 0rem;
-  max-width : 99%;
-  height : auto;
-  align-self: center;
-}
-
-.title {
-  margin-bottom: 0.5rem;
-  /* color:var(--color-orange-secondary); */
-}
-
-.button {
-  background-color: var(--color-teal-accent);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-/* Modal */
-.modal-card {
-  max-width: 90%;
-  width: 600px;
-}
-
-/* Footer */
-.footer {
-  position: absolute;
-  bottom: 0;
-  background-color: var(--color-orange-primary);
-  padding: 1rem;
-  text-align: center;
+.footer{
+  position:absolute;
+  bottom:0;
+  background-color:var(--color-orange-primary );
   width: 100%;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .navbar-menu {
-    flex-direction: column;
-    align-items: stretch;
-    
-  }
-
-  #filter {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  #filter input, #filter button {
-    width: 100%;
-  }
-
-  .column {
-    width: 100%;
-  }
-
-  .columns .is-multiline{
-    max-width: 90%;
-    
-  }
-
-  .card {
-    background-color: white;
-    border-bottom: 3px solid var(--color-orange-secondary);
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 95%;
-    min-width: 500px;
-  }
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1023px) {
-  .container{
+/* Styles pour les tablettes (min-width: 768px) */
+@media (min-width: 768px) {
+  nav ul {
     display: flex;
-    flex-flow: wrap;
-    width: 90%;
+    justify-content: center;
+    gap: 1rem;
   }
 
-  .column.is-one-third{
-    width: 100%;
+  nav ul li {
+    margin: 0;
   }
-  
-  .columns.is-multiline{
-    width: 300px;
-  }
-  .card {
-    max-width: 90%;
-    width: 100%;
+
+  main {
+    max-width: 700px;
+    margin: 0 auto;
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .container{
-    display: flex;
-    flex-flow: wrap;
-    width: 90%;
+/* Styles pour les écrans larges (min-width: 1024px) */
+@media (min-width: 1024px) {
+  header {
+    text-align: left;
+    padding: 2rem;
   }
 
-  .column.is-one-third{
-    width: 100%;
+  nav ul {
+    justify-content: flex-start;
   }
-  
-  .columns.is-multiline{
-    width: 300px;
-  }
-  .card {
-    max-width: 90%;
-    width: 100%;
+
+  main {
+    max-width: 900px;
   }
 }
+
+
+
